@@ -3,6 +3,7 @@ package bo.feribot.app.ui.chat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bo.feribot.app.R;
+import bo.feribot.app.domain.RespuestaFeriBot;
+import bo.feribot.app.ui.mapa.MapaActivity;
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MensajeViewHolder> {
 
@@ -43,7 +46,26 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MensajeViewHol
 
     @Override
     public void onBindViewHolder(@NonNull MensajeViewHolder holder, int position) {
-        holder.texto.setText(mensajes.get(position).texto);
+        Mensaje mensaje = mensajes.get(position);
+        holder.texto.setText(mensaje.texto);
+
+        if (holder.botonMapa == null) {
+            return;
+        }
+
+        RespuestaFeriBot respuesta = mensaje.respuesta;
+        boolean tieneUbicacion = respuesta != null
+                && respuesta.latitud != null
+                && respuesta.longitud != null;
+
+        if (tieneUbicacion) {
+            holder.botonMapa.setVisibility(View.VISIBLE);
+            holder.botonMapa.setOnClickListener(vista ->
+                    MapaActivity.abrir(vista.getContext(), respuesta));
+        } else {
+            holder.botonMapa.setVisibility(View.GONE);
+            holder.botonMapa.setOnClickListener(null);
+        }
     }
 
     @Override
@@ -54,10 +76,12 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MensajeViewHol
     static class MensajeViewHolder extends RecyclerView.ViewHolder {
 
         final TextView texto;
+        final Button botonMapa;
 
         MensajeViewHolder(@NonNull View itemView) {
             super(itemView);
             texto = itemView.findViewById(R.id.textoMensaje);
+            botonMapa = itemView.findViewById(R.id.botonMapa);
         }
     }
 }

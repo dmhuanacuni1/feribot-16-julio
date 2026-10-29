@@ -58,6 +58,8 @@ public class MotorFeriBotTest {
         assertNotNull(respuesta.consejo);
         assertTrue(respuesta.mensaje.contains("Producto identificado"));
         assertTrue(respuesta.mensaje.contains("Consejo del casero"));
+        assertEquals(-16.5, respuesta.latitud, 0.0001);
+        assertEquals(-68.16, respuesta.longitud, 0.0001);
     }
 
     @Test
