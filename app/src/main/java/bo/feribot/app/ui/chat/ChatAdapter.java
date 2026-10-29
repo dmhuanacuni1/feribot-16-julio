@@ -14,6 +14,7 @@ import java.util.List;
 
 import bo.feribot.app.R;
 import bo.feribot.app.domain.RespuestaFeriBot;
+import bo.feribot.app.ui.foto.FotoActivity;
 import bo.feribot.app.ui.mapa.MapaActivity;
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MensajeViewHolder> {
@@ -57,6 +58,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MensajeViewHol
         boolean tieneUbicacion = respuesta != null
                 && respuesta.latitud != null
                 && respuesta.longitud != null;
+        boolean tieneProducto = respuesta != null
+                && respuesta.productoId != null;
 
         if (tieneUbicacion) {
             holder.botonMapa.setVisibility(View.VISIBLE);
@@ -65,6 +68,15 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MensajeViewHol
         } else {
             holder.botonMapa.setVisibility(View.GONE);
             holder.botonMapa.setOnClickListener(null);
+        }
+
+        if (tieneProducto) {
+            holder.botonFoto.setVisibility(View.VISIBLE);
+            holder.botonFoto.setOnClickListener(vista ->
+                    FotoActivity.abrir(vista.getContext(), respuesta));
+        } else {
+            holder.botonFoto.setVisibility(View.GONE);
+            holder.botonFoto.setOnClickListener(null);
         }
     }
 
@@ -77,11 +89,13 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MensajeViewHol
 
         final TextView texto;
         final Button botonMapa;
+        final Button botonFoto;
 
         MensajeViewHolder(@NonNull View itemView) {
             super(itemView);
             texto = itemView.findViewById(R.id.textoMensaje);
             botonMapa = itemView.findViewById(R.id.botonMapa);
+            botonFoto = itemView.findViewById(R.id.botonFoto);
         }
     }
 }

@@ -19,17 +19,36 @@
         android:textColor="@color/texto_principal"
         android:textSize="15sp" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/botonMapa"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:minHeight="36dp"
-        android:text="@string/chat_ver_mapa"
-        android:textColor="@color/azul"
-        android:visibility="gone"
-        app:icon="@drawable/ic_mapa"
-        app:iconTint="@color/azul" />
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/botonMapa"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:minHeight="36dp"
+            android:text="@string/chat_ver_mapa"
+            android:textColor="@color/azul"
+            android:visibility="gone"
+            app:icon="@drawable/ic_mapa"
+            app:iconTint="@color/azul" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/botonFoto"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="36dp"
+            android:text="@string/chat_foto"
+            android:textColor="@color/azul"
+            android:visibility="gone"
+            app:icon="@drawable/ic_camara"
+            app:iconTint="@color/azul" />
+
+    </LinearLayout>
 
 </LinearLayout>
