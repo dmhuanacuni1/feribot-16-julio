@@ -1,0 +1,56 @@
+# -------------------------
+# Android / Gradle
+# -------------------------
+*.iml
+.gradle/
+local.properties
+.idea/
+.DS_Store
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+output.json
+
+# -------------------------
+# Java
+# -------------------------
+*.jar
+*.war
+*.ear
+hs_err_pid*
+replay_pid*
+
+# -------------------------
+# Entornos y secretos
+# -------------------------
+.env
+.env.*
+!.env.example
+*.jks
+*.keystore
+keystore.properties
+google-services.json
+secrets.properties
+
+# -------------------------
+# Base de datos local
+# -------------------------
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# -------------------------
+# Herramientas / SO
+# -------------------------
+.vscode/
+Thumbs.db
+desktop.ini
+*.log

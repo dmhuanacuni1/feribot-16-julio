@@ -1,0 +1,19 @@
+# Normalización de saltos de línea
+* text=auto
+
+*.java   text
+*.md     text
+*.sql    text
+*.json   text
+*.yml    text
+*.xml    text
+*.gradle text
+*.ps1    text eol=crlf
+*.bat    text eol=crlf
+*.sh     text eol=lf
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.webp   binary
+*.apk    binary
+*.db     binary
