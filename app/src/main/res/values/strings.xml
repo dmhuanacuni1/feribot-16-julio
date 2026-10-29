@@ -5,9 +5,19 @@
     <string name="chat_hint">Ej.: ¿a cómo está la lap?</string>
     <string name="chat_enviar">Enviar mensaje</string>
     <string name="chat_mic">Dictar por voz</string>
-    <string name="chat_mic_proximamente">El dictado por voz llega en el Sprint 2</string>
+    <string name="chat_mic_prompt">Di lo que buscas en la feria</string>
+    <string name="chat_mic_no_disponible">Este celular no tiene dictado por voz instalado</string>
     <string name="chat_ver_mapa">Ver en Mapa</string>
     <string name="chat_foto">Foto de la cotización</string>
+
+    <string name="foto_titulo">Foto de la cotización</string>
+    <string name="foto_subtitulo">Encuadra el producto en el puesto</string>
+    <string name="foto_capturar">Capturar</string>
+    <string name="foto_cancelar">Cancelar</string>
+    <string name="foto_guardada">Foto guardada con la cotización</string>
+    <string name="foto_error">No se pudo tomar la foto</string>
+    <string name="foto_sin_camara">Este celular no tiene una cámara disponible</string>
+    <string name="foto_permiso">Necesito permiso de cámara para tomar la foto</string>
 
     <string name="mapa_titulo">Mapa de la feria</string>
     <string name="mapa_sin_conexion">Mapa offline · plano referencial</string>
