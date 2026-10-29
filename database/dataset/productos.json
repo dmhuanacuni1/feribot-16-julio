@@ -1,0 +1,381 @@
+{
+  "version": "1.0.0",
+  "fecha": "2026-10-29",
+  "feria": {
+    "nombre": "Feria 16 de Julio",
+    "ciudad": "El Alto",
+    "departamento": "La Paz",
+    "pais": "Bolivia",
+    "moneda": "BOB",
+    "dias": ["jueves", "domingo"],
+    "horario": "08:00-17:00",
+    "centro": { "latitud": -16.5038, "longitud": -68.1651 },
+    "nota": "Precios y coordenadas referenciales de ejemplo; validar en campo."
+  },
+  "comerciantes": [
+    { "id": 1, "nombre": "Rosa Quispe Mamani", "telefono": "71234567", "puesto": "ELE-01" },
+    { "id": 2, "nombre": "Juan Carlos Apaza", "telefono": "72345678", "puesto": "AUT-01" },
+    { "id": 3, "nombre": "María Elena Choque", "telefono": "73456789", "puesto": "ROP-01" },
+    { "id": 4, "nombre": "Pedro Nina Flores", "telefono": "74567890", "puesto": "HER-01" },
+    { "id": 5, "nombre": "Silvia Condori Ticona", "telefono": "75678901", "puesto": "CAL-01" }
+  ],
+  "puestos": [
+    {
+      "id": 1, "codigo": "ELE-01", "sector": "Electrónica", "calle": "Calle 1",
+      "referencia": "Frente a la Plaza 16 de Julio, lado de las galerías",
+      "latitud": -16.5018, "longitud": -68.1682,
+      "dias_atencion": "jueves,domingo", "horario": "08:00-17:00"
+    },
+    {
+      "id": 2, "codigo": "ELE-02", "sector": "Electrónica", "calle": "Calle 2",
+      "referencia": "Pasillo de laptops, media cuadra de la Av. 16 de Julio",
+      "latitud": -16.5026, "longitud": -68.1669,
+      "dias_atencion": "jueves,domingo", "horario": "08:00-17:00"
+    },
+    {
+      "id": 3, "codigo": "AUT-01", "sector": "Autopartes", "calle": "Av. Juan Pablo II",
+      "referencia": "Entre calles 6 y 7, lado norte",
+      "latitud": -16.5075, "longitud": -68.1601,
+      "dias_atencion": "jueves,domingo", "horario": "07:30-17:00"
+    },
+    {
+      "id": 4, "codigo": "ROP-01", "sector": "Ropa", "calle": "Calle 3",
+      "referencia": "Sector chamarras, frente al mercado",
+      "latitud": -16.5038, "longitud": -68.1651,
+      "dias_atencion": "jueves,domingo", "horario": "08:00-17:30"
+    },
+    {
+      "id": 5, "codigo": "ROP-02", "sector": "Ropa", "calle": "Calle 4",
+      "referencia": "Pasillo de jeans y casacas",
+      "latitud": -16.5046, "longitud": -68.1638,
+      "dias_atencion": "jueves,domingo", "horario": "08:00-17:30"
+    },
+    {
+      "id": 6, "codigo": "CAL-01", "sector": "Calzado", "calle": "Calle 4",
+      "referencia": "Esquina con Av. 16 de Julio",
+      "latitud": -16.5053, "longitud": -68.1626,
+      "dias_atencion": "jueves,domingo", "horario": "08:00-17:00"
+    },
+    {
+      "id": 7, "codigo": "HER-01", "sector": "Herramientas", "calle": "Calle 5",
+      "referencia": "Sector ferretería, lado este",
+      "latitud": -16.5061, "longitud": -68.1614,
+      "dias_atencion": "jueves,domingo", "horario": "07:00-17:00"
+    },
+    {
+      "id": 8, "codigo": "HER-02", "sector": "Herramientas", "calle": "Calle 6",
+      "referencia": "Pasillo de herramientas eléctricas",
+      "latitud": -16.5069, "longitud": -68.1601,
+      "dias_atencion": "jueves,domingo", "horario": "07:00-17:00"
+    }
+  ],
+  "rubros": [
+    {
+      "id": 1,
+      "nombre": "Electrónica",
+      "descripcion": "Laptops, celulares, audio, televisores y accesorios",
+      "productos": [
+        {
+          "id": 1, "nombre": "Laptop Lenovo ThinkPad T480", "estado": "usado",
+          "precio_min": 2800, "precio_max": 3600,
+          "descripcion": "Core i5 de 8va generación, 8 GB RAM, 256 GB SSD",
+          "consejo": "Prueba la batería 15 minutos sin cargador, revisa teclado y touchpad, y pide el cargador original.",
+          "sinonimos": ["lap", "laptop", "portátil", "notebook", "thinkpad"],
+          "puestos": [
+            { "codigo": "ELE-01", "precio_min": 2800, "precio_max": 3400 },
+            { "codigo": "ELE-02", "precio_min": 2900, "precio_max": 3600 }
+          ]
+        },
+        {
+          "id": 2, "nombre": "Laptop HP EliteBook 840 G5", "estado": "usado",
+          "precio_min": 2500, "precio_max": 3300,
+          "descripcion": "Core i5, 8 GB RAM, 256 GB SSD, pantalla 14\"",
+          "consejo": "Verifica los puertos USB y que la bisagra no tenga juego.",
+          "sinonimos": ["laptop hp", "elitebook", "compu hp"],
+          "puestos": [
+            { "codigo": "ELE-01", "precio_min": 2500, "precio_max": 3100 },
+            { "codigo": "ELE-02", "precio_min": 2600, "precio_max": 3300 }
+          ]
+        },
+        {
+          "id": 3, "nombre": "Celular Xiaomi Redmi Note 12", "estado": "nuevo",
+          "precio_min": 1200, "precio_max": 1500,
+          "descripcion": "128 GB, 6 GB RAM, cámara de 50 MP",
+          "consejo": "Pide el equipo sellado y revisa el IMEI con *#06# antes de pagar.",
+          "sinonimos": ["cel", "celu", "celular", "xiaomi", "redmi"],
+          "puestos": [
+            { "codigo": "ELE-01", "precio_min": 1200, "precio_max": 1450 }
+          ]
+        },
+        {
+          "id": 4, "nombre": "Audífonos Bluetooth JBL Tune 510BT", "estado": "nuevo",
+          "precio_min": 180, "precio_max": 260,
+          "descripcion": "On-ear inalámbricos, hasta 40 horas de batería",
+          "consejo": "Conéctalos por Bluetooth y prueba ambos canales con música.",
+          "sinonimos": ["audífonos", "auriculares", "bluetooth", "jbl"],
+          "puestos": [
+            { "codigo": "ELE-01", "precio_min": 180, "precio_max": 240 },
+            { "codigo": "ELE-02", "precio_min": 190, "precio_max": 260 }
+          ]
+        },
+        {
+          "id": 5, "nombre": "Televisor LG 43\" LED", "estado": "nuevo",
+          "precio_min": 1500, "precio_max": 1900,
+          "descripcion": "Full HD, 2 puertos HDMI, sintonizador digital",
+          "consejo": "Pide encenderlo y revisa píxeles muertos con un fondo blanco.",
+          "sinonimos": ["tele", "televisor", "tv", "pantalla"],
+          "puestos": [
+            { "codigo": "ELE-02", "precio_min": 1500, "precio_max": 1850 }
+          ]
+        },
+        {
+          "id": 6, "nombre": "Cargador rápido USB-C 65W", "estado": "nuevo",
+          "precio_min": 80, "precio_max": 150,
+          "descripcion": "Compatible con laptops y celulares, incluye cable",
+          "consejo": "Verifica el voltaje en la etiqueta y que no caliente en 5 minutos.",
+          "sinonimos": ["cargador", "cargador rápido", "usb-c", "tipo c"],
+          "puestos": [
+            { "codigo": "ELE-01", "precio_min": 80, "precio_max": 140 }
+          ]
+        },
+        {
+          "id": 7, "nombre": "Tablet Samsung Galaxy Tab A9", "estado": "nuevo",
+          "precio_min": 900, "precio_max": 1200,
+          "descripcion": "8.7\", 64 GB, WiFi, Android",
+          "consejo": "Prueba la pantalla táctil en las cuatro esquinas.",
+          "sinonimos": ["tablet", "tableta", "tab"],
+          "puestos": [
+            { "codigo": "ELE-02", "precio_min": 900, "precio_max": 1180 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "Autopartes",
+      "descripcion": "Repuestos y accesorios para vehículos",
+      "productos": [
+        {
+          "id": 8, "nombre": "Llanta Bridgestone 195/65 R15", "estado": "usado",
+          "precio_min": 250, "precio_max": 380,
+          "descripcion": "Usada con aproximadamente 80 % de vida",
+          "consejo": "Revisa el DOT (fecha de fabricación) y que el dibujo tenga al menos 5 mm.",
+          "sinonimos": ["llanta", "neumático", "rueda", "aro 15"],
+          "puestos": [
+            { "codigo": "AUT-01", "precio_min": 250, "precio_max": 380 }
+          ]
+        },
+        {
+          "id": 9, "nombre": "Faro delantero Toyota Corolla 2014", "estado": "usado",
+          "precio_min": 300, "precio_max": 450,
+          "descripcion": "Original, lado derecho",
+          "consejo": "Compara el número de parte y revisa que no tenga humedad.",
+          "sinonimos": ["faro", "foco delantero", "luz"],
+          "puestos": [
+            { "codigo": "AUT-01", "precio_min": 300, "precio_max": 450 }
+          ]
+        },
+        {
+          "id": 10, "nombre": "Batería Willard 13 placas", "estado": "nuevo",
+          "precio_min": 550, "precio_max": 700,
+          "descripcion": "12 V, libre de mantenimiento",
+          "consejo": "Pide la prueba de carga y verifica la fecha de fabricación.",
+          "sinonimos": ["batería", "batería de auto", "acumulador"],
+          "puestos": [
+            { "codigo": "AUT-01", "precio_min": 550, "precio_max": 700 }
+          ]
+        },
+        {
+          "id": 11, "nombre": "Amortiguador delantero Nissan Sentra", "estado": "nuevo",
+          "precio_min": 180, "precio_max": 280,
+          "descripcion": "Par delantero, gas",
+          "consejo": "Presiona el vástago: debe volver firme y sin ruido.",
+          "sinonimos": ["amortiguador", "suspensión"],
+          "puestos": [
+            { "codigo": "AUT-01", "precio_min": 180, "precio_max": 280 }
+          ]
+        },
+        {
+          "id": 12, "nombre": "Espejo retrovisor Hyundai Accent", "estado": "usado",
+          "precio_min": 120, "precio_max": 200,
+          "descripcion": "Eléctrico, lado izquierdo",
+          "consejo": "Verifica que el conector eléctrico coincida con tu modelo.",
+          "sinonimos": ["espejo", "retrovisor"],
+          "puestos": [
+            { "codigo": "AUT-01", "precio_min": 120, "precio_max": 200 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "nombre": "Ropa",
+      "descripcion": "Prendas nuevas y usadas, nacionales e importadas",
+      "productos": [
+        {
+          "id": 13, "nombre": "Chamarra de cuero", "estado": "usado",
+          "precio_min": 80, "precio_max": 200,
+          "descripcion": "Cuero natural, talles variados",
+          "consejo": "Huele el cuero: si huele a plástico es sintético; revisa las costuras.",
+          "sinonimos": ["chamarra", "casaca de cuero", "campera", "cuerina"],
+          "puestos": [
+            { "codigo": "ROP-01", "precio_min": 80, "precio_max": 200 },
+            { "codigo": "ROP-02", "precio_min": 90, "precio_max": 190 }
+          ]
+        },
+        {
+          "id": 14, "nombre": "Jeans Levi's 501", "estado": "usado",
+          "precio_min": 40, "precio_max": 90,
+          "descripcion": "Corte recto, tiro alto",
+          "consejo": "Revisa la etiqueta interior y los remaches; el original no se destiñe fácil.",
+          "sinonimos": ["jean", "jeans", "pantalón de mezclilla", "levis"],
+          "puestos": [
+            { "codigo": "ROP-02", "precio_min": 40, "precio_max": 90 }
+          ]
+        },
+        {
+          "id": 15, "nombre": "Casaca impermeable", "estado": "nuevo",
+          "precio_min": 120, "precio_max": 220,
+          "descripcion": "Con capucha, resistente al viento",
+          "consejo": "Prueba con unas gotas de agua: debe resbalar, no absorber.",
+          "sinonimos": ["casaca", "impermeable", "chaqueta", "rompevientos"],
+          "puestos": [
+            { "codigo": "ROP-01", "precio_min": 120, "precio_max": 220 }
+          ]
+        },
+        {
+          "id": 16, "nombre": "Polera de alpaca", "estado": "nuevo",
+          "precio_min": 60, "precio_max": 120,
+          "descripcion": "Tejido artesanal, talles S a XL",
+          "consejo": "Pasa la mano: la alpaca es suave y no pica como la lana de oveja.",
+          "sinonimos": ["polera", "chompa", "suéter", "alpaca"],
+          "puestos": [
+            { "codigo": "ROP-01", "precio_min": 60, "precio_max": 120 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "nombre": "Calzado",
+      "descripcion": "Zapatillas, zapatos formales, sandalias y botines",
+      "productos": [
+        {
+          "id": 17, "nombre": "Zapatillas Nike Air Max", "estado": "usado",
+          "precio_min": 150, "precio_max": 320,
+          "descripcion": "Importadas, talles 38 a 44",
+          "consejo": "Revisa la suela y la etiqueta de talla; las costuras deben estar parejas.",
+          "sinonimos": ["zapatillas", "tenis", "nike", "zapatos deportivos"],
+          "puestos": [
+            { "codigo": "CAL-01", "precio_min": 150, "precio_max": 320 }
+          ]
+        },
+        {
+          "id": 18, "nombre": "Zapatos de cuero formal", "estado": "nuevo",
+          "precio_min": 180, "precio_max": 300,
+          "descripcion": "Cuero genuino, suela de goma",
+          "consejo": "Dobla la suela: debe ser flexible y el cuero no debe agrietarse.",
+          "sinonimos": ["zapatos", "zapatos formales", "calzado de cuero"],
+          "puestos": [
+            { "codigo": "CAL-01", "precio_min": 180, "precio_max": 300 }
+          ]
+        },
+        {
+          "id": 19, "nombre": "Sandalias de cuero", "estado": "nuevo",
+          "precio_min": 60, "precio_max": 120,
+          "descripcion": "Hechas a mano, talles 35 a 42",
+          "consejo": "Verifica que las tiras estén cosidas, no solo pegadas.",
+          "sinonimos": ["sandalias", "ojotas", "chanclas"],
+          "puestos": [
+            { "codigo": "CAL-01", "precio_min": 60, "precio_max": 120 }
+          ]
+        },
+        {
+          "id": 20, "nombre": "Botines de seguridad", "estado": "nuevo",
+          "precio_min": 200, "precio_max": 350,
+          "descripcion": "Puntera de acero, suela antideslizante",
+          "consejo": "Pide ver la certificación de la puntera y prueba el peso.",
+          "sinonimos": ["botines", "botas de seguridad", "zapatos de trabajo"],
+          "puestos": [
+            { "codigo": "CAL-01", "precio_min": 200, "precio_max": 350 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "nombre": "Herramientas",
+      "descripcion": "Herramientas manuales y eléctricas para construcción y taller",
+      "productos": [
+        {
+          "id": 21, "nombre": "Taladro percutor Bosch 650W", "estado": "nuevo",
+          "precio_min": 380, "precio_max": 520,
+          "descripcion": "Mandril de 13 mm, incluye maletín",
+          "consejo": "Pídelo funcionando y revisa que el mandril no tenga juego.",
+          "sinonimos": ["taladro", "taladro percutor", "bosch"],
+          "puestos": [
+            { "codigo": "HER-01", "precio_min": 380, "precio_max": 520 }
+          ]
+        },
+        {
+          "id": 22, "nombre": "Amoladora angular 4½\"", "estado": "nuevo",
+          "precio_min": 220, "precio_max": 350,
+          "descripcion": "850 W, disco de corte incluido",
+          "consejo": "Prueba en vacío 10 segundos y revisa que el disco gire sin vibración.",
+          "sinonimos": ["amoladora", "esmeril", "angular"],
+          "puestos": [
+            { "codigo": "HER-01", "precio_min": 220, "precio_max": 350 }
+          ]
+        },
+        {
+          "id": 23, "nombre": "Juego de llaves mixtas 12 piezas", "estado": "nuevo",
+          "precio_min": 90, "precio_max": 160,
+          "descripcion": "Acero cromo vanadio, medidas 8 a 19 mm",
+          "consejo": "Verifica el cromado y que las medidas estén completas.",
+          "sinonimos": ["llaves", "juego de llaves", "herramientas"],
+          "puestos": [
+            { "codigo": "HER-02", "precio_min": 90, "precio_max": 160 }
+          ]
+        },
+        {
+          "id": 24, "nombre": "Multímetro digital", "estado": "nuevo",
+          "precio_min": 60, "precio_max": 140,
+          "descripcion": "Voltaje, corriente y continuidad",
+          "consejo": "Prueba continuidad y revisa que la pantalla no tenga fugas.",
+          "sinonimos": ["multímetro", "tester", "medidor"],
+          "puestos": [
+            { "codigo": "HER-02", "precio_min": 60, "precio_max": 140 }
+          ]
+        },
+        {
+          "id": 25, "nombre": "Compresor de aire 50L", "estado": "nuevo",
+          "precio_min": 900, "precio_max": 1400,
+          "descripcion": "2 HP, 8 bar, con manómetro",
+          "consejo": "Pide encenderlo y revisa que mantenga presión sin fugas.",
+          "sinonimos": ["compresor", "compresor de aire"],
+          "puestos": [
+            { "codigo": "HER-02", "precio_min": 900, "precio_max": 1400 }
+          ]
+        }
+      ]
+    }
+  ],
+  "modismos": [
+    { "termino": "a cómo está", "tipo": "intencion", "destino": "consultar_precio" },
+    { "termino": "a cuánto", "tipo": "intencion", "destino": "consultar_precio" },
+    { "termino": "cuánto cuesta", "tipo": "intencion", "destino": "consultar_precio" },
+    { "termino": "cuánto está", "tipo": "intencion", "destino": "consultar_precio" },
+    { "termino": "precio", "tipo": "intencion", "destino": "consultar_precio" },
+    { "termino": "dónde queda", "tipo": "intencion", "destino": "consultar_ubicacion" },
+    { "termino": "dónde está", "tipo": "intencion", "destino": "consultar_ubicacion" },
+    { "termino": "ubicación", "tipo": "intencion", "destino": "consultar_ubicacion" },
+    { "termino": "en la 16", "tipo": "modismo", "destino": "Feria 16 de Julio" },
+    { "termino": "casero", "tipo": "modismo", "destino": "comerciante" },
+    { "termino": "casera", "tipo": "modismo", "destino": "comerciante" },
+    { "termino": "yapeo", "tipo": "modismo", "destino": "regateo" },
+    { "termino": "regateo", "tipo": "modismo", "destino": "regateo" },
+    { "termino": "hola", "tipo": "intencion", "destino": "saludo" },
+    { "termino": "buenas", "tipo": "intencion", "destino": "saludo" },
+    { "termino": "ayuda", "tipo": "intencion", "destino": "ayuda" }
+  ]
+}
