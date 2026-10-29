@@ -26,7 +26,7 @@ con la nube mediante una cola de cambios cuando hay internet.
 
 ```
 AGENTE IA/
-├── app/                    # Aplicación Android (Java)          [Sprint 1]
+├── app/                    # Aplicación Android (Java)          [Sprint 2]
 ├── backend/                # API REST + panel web (Spring Boot) [Sprint 3]
 ├── database/
 │   ├── schema.sql          # Esquema SQLite (referencia Room)
@@ -35,8 +35,10 @@ AGENTE IA/
 │       └── productos.json  # Dataset semilla editable
 ├── docs/                   # Visión, DevOps, arquitectura, modelo de datos, backlog
 ├── tools/
-│   └── generar-seed.ps1    # Dataset JSON → seed.sql
-├── .github/                # Plantillas de issues y pull requests
+│   ├── generar-seed.ps1    # Dataset JSON → seed.sql
+│   ├── generar-mapa.ps1    # Plano offline de la feria → PNG
+│   └── validar-seed.py     # Verifica la consistencia del dataset
+├── .github/                # Workflows de CI y plantillas
 └── README.md
 ```
 
@@ -74,13 +76,30 @@ Requisitos: JDK 17+ (Android Studio incluye uno), Android Studio Ladybug o super
 Android SDK 36. Si Gradle no encuentra el SDK, crea `local.properties` con
 `sdk.dir=<ruta del SDK>`.
 
+> **Si el proyecto vive dentro de OneDrive** y la compilación falla con
+> `AccessDeniedException` o `Unable to delete directory` en `app/build`, cierra
+> Android Studio, ejecuta `rmdir /s /q app\build` y vuelve a compilar. También puedes
+> excluir `app/build` y `.gradle` de la sincronización de OneDrive.
+
+---
+
+## ✨ Funcionalidades por sprint
+
+| Sprint | Funcionalidad | Estado |
+|---|---|---|
+| 1 | Chat offline con motor de reglas, sinónimos y precios en BOB | ✅ |
+| 2 | Mapa offline con el puesto marcado, GPS y distancia | ✅ |
+| 2 | Dictado de consultas por voz | ✅ |
+| 2 | Foto del producto guardada con la cotización | ✅ |
+| 3 | Panel web + API REST + sincronización | ⏳ |
+
 ---
 
 ## 🗺️ Roadmap
 
 - [x] **Sprint 0** — Repositorio, documentación, diagramas, esquema y dataset
 - [x] **Sprint 1** — App Android en Java, Room y chat offline con motor de reglas
-- [ ] **Sprint 2** — Geolocalización, mapas offline, cámara y voz
+- [x] **Sprint 2** — Mapa offline, GPS, dictado por voz y cámara
 - [ ] **Sprint 3** — API REST + panel web + sincronización
 - [ ] **Sprint 4** — Pruebas, hardening y entrega final
 

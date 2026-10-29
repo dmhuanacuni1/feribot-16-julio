@@ -110,7 +110,7 @@ Una historia entra a un sprint si:
 |---|---|---|
 | 0 | ✅ Completado | HU-01 |
 | 1 | ✅ Completado | HU-02, HU-04, HU-05, HU-06, HU-21 |
-| 2 | ⏳ Pendiente | HU-09 a HU-14 |
+| 2 | ✅ Completado | HU-09, HU-10, HU-11, HU-12, HU-14 |
 | 3 | ⏳ Pendiente | HU-15 a HU-19 |
 | 4 | ⏳ Pendiente | HU-20, HU-22, HU-23 |
 
