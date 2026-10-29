@@ -1,14 +1,20 @@
 package bo.feribot.app.ui.chat;
 
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
+import android.speech.SpeechRecognizer;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import bo.feribot.app.R;
 import bo.feribot.app.databinding.ActivityChatBinding;
@@ -18,6 +24,22 @@ public class ChatActivity extends AppCompatActivity {
     private ActivityChatBinding binding;
     private ChatViewModel viewModel;
     private ChatAdapter adaptador;
+
+    private final ActivityResultLauncher<Intent> lanzadorVoz = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            resultado -> {
+                if (resultado.getResultCode() != RESULT_OK || resultado.getData() == null) {
+                    return;
+                }
+                ArrayList<String> opciones = resultado.getData()
+                        .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                if (opciones == null || opciones.isEmpty()) {
+                    return;
+                }
+                String texto = opciones.get(0);
+                binding.campoMensaje.setText(texto);
+                binding.campoMensaje.setSelection(texto.length());
+            });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +69,27 @@ public class ChatActivity extends AppCompatActivity {
             }
             return false;
         });
-        binding.botonMicrofono.setOnClickListener(vista ->
-                Toast.makeText(this, R.string.chat_mic_proximamente, Toast.LENGTH_SHORT).show());
+        binding.botonMicrofono.setOnClickListener(vista -> dictar());
+    }
+
+    private void dictar() {
+        if (!SpeechRecognizer.isRecognitionAvailable(this)) {
+            Toast.makeText(this, R.string.chat_mic_no_disponible, Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        Intent voz = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        voz.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        voz.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "es-BO");
+        voz.putExtra(RecognizerIntent.EXTRA_PROMPT, getString(R.string.chat_mic_prompt));
+        voz.putExtra(RecognizerIntent.EXTRA_PREFER_OFFLINE, true);
+
+        try {
+            lanzadorVoz.launch(voz);
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(this, R.string.chat_mic_no_disponible, Toast.LENGTH_LONG).show();
+        }
     }
 
     private void enviar() {

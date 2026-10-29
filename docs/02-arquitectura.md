@@ -81,7 +81,23 @@ Reglas clave:
 - Si no hay coincidencia: se responde con el rubro más cercano y se aclara que es estimado.
 - Toda respuesta se arma con una plantilla fija (producto, precio, ubicación, acción, consejo).
 
-### 2.3 Backend (Spring Boot 3 + PostgreSQL)
+### 2.3 Mapa offline y GPS
+
+La app no descarga tiles de internet. El plano de la feria se dibuja una sola vez con
+`tools/generar-mapa.ps1` (System.Drawing) y se guarda como PNG en
+`app/src/main/res/drawable-nodpi/mapa_feria.png`. En tiempo de ejecución:
+
+1. `MapaActivity` crea un `MapView` de osmdroid con `setUseDataConnection(false)`.
+2. El PNG se superpone como `GroundOverlay` sobre los límites geográficos de la feria.
+3. Cada puesto del dataset se dibuja como `Marker`; el puesto consultado usa un pin rojo.
+4. Con permiso de ubicación, `LocationManager` obtiene una posición y se calcula la
+   distancia con `Location.distanceBetween` (sin servicios de Google).
+
+Ventajas: funciona en modo avión, no consume datos y el tamaño del plano es menor a 100 KB.
+Si en el futuro se necesita cartografía real, se reemplaza el `GroundOverlay` por un
+archivo MBTiles sin cambiar el resto de la pantalla.
+
+### 2.4 Backend (Spring Boot 3 + PostgreSQL)
 
 | Endpoint | Método | Descripción |
 |---|---|---|
@@ -94,7 +110,7 @@ Reglas clave:
 
 El panel web consume la misma API. En el MVP se sirve con Thymeleaf para reducir despliegues.
 
-### 2.4 Sincronización híbrida
+### 2.5 Sincronización híbrida
 
 1. Cada cambio local se registra en `cola_sincronizacion` (`entidad`, `entidad_id`, `operacion`, `payload`).
 2. `SyncWorker` (WorkManager) se ejecuta con red disponible y cada 6 h.
@@ -109,7 +125,7 @@ El panel web consume la misma API. En el MVP se sirve con Thymeleaf para reducir
 |---|---|---|---|
 | ADR-01 | Java nativo en Android | Kotlin / Flutter | Requisito académico y dominio del equipo |
 | ADR-02 | Room (SQLite) | Realm / archivos JSON | Integración oficial, consultas SQL y migraciones |
-| ADR-03 | osmdroid + tiles offline | Google Maps | Google no permite descarga offline arbitraria |
+| ADR-03 | osmdroid + plano propio offline | Google Maps | Google no permite mapas offline arbitrarios; el plano pesa < 100 KB |
 | ADR-04 | Motor de reglas local | LLM en la nube | Funciona sin señal y responde rápido |
 | ADR-05 | Spring Boot | Node/Express | Mismo lenguaje en todo el stack |
 | ADR-06 | Thymeleaf para el panel | React SPA | Menos piezas que desplegar en el MVP |
@@ -127,19 +143,15 @@ El panel web consume la misma API. En el MVP se sirve con Thymeleaf para reducir
 | Compatibilidad | Android 8.0 (API 26) a Android 16 (API 36) |
 | Mantenibilidad | Capas separadas, pruebas unitarias del motor ≥ 70 % |
 
-## 5. Estructura del paquete Android (prevista)
+## 5. Estructura del paquete Android
 
 ```
-bo.edu.feriabot
-├── ui/chat        ChatActivity, ChatAdapter
-├── ui/mapa        MapaActivity
-├── ui/camara      CamaraActivity
-├── ui/historial   HistorialActivity
-├── viewmodel/     ChatViewModel
-├── domain/        Producto, Puesto, MotorFeriBot, RespuestaFeriBot
-├── data/local/    AppDatabase, ProductoDao, PuestoDao, entidades
-├── data/remote/   ApiService, DTOs
-├── data/repository/
-├── data/sync/     SyncWorker
-└── util/          FormatoMoneda, Normalizador
+bo.feribot.app
+├── ui/chat        ChatActivity, ChatAdapter, ChatViewModel, Mensaje
+├── ui/mapa        MapaActivity (osmdroid + GroundOverlay + GPS)
+├── ui/foto        FotoActivity (CameraX)
+├── domain/        MotorFeriBot, RespuestaFeriBot, Normalizador, FormatoMoneda
+├── data/          RepositorioFeriBot
+├── data/local/    AppDatabase, SeedLoader, DAOs, entidades y migraciones
+└── res/           drawables, layouts y plano offline en drawable-nodpi
 ```

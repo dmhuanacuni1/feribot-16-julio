@@ -23,7 +23,7 @@ public class ChatViewModel extends AndroidViewModel {
         super(application);
         repositorio = RepositorioFeriBot.obtener(application);
         mensajes.setValue(new ArrayList<>());
-        repositorio.prepararDatos(() -> agregarBot(RespuestaFeriBot.saludo().mensaje));
+        repositorio.prepararDatos(() -> agregarBot(RespuestaFeriBot.saludo()));
     }
 
     public LiveData<List<Mensaje>> getMensajes() {
@@ -36,11 +36,11 @@ public class ChatViewModel extends AndroidViewModel {
             return;
         }
         agregar(new Mensaje(true, limpio));
-        repositorio.responder(limpio, respuesta -> agregarBot(respuesta.mensaje));
+        repositorio.responder(limpio, this::agregarBot);
     }
 
-    private void agregarBot(String texto) {
-        agregar(new Mensaje(false, texto));
+    private void agregarBot(RespuestaFeriBot respuesta) {
+        agregar(new Mensaje(false, respuesta.mensaje, respuesta));
     }
 
     private void agregar(Mensaje mensaje) {

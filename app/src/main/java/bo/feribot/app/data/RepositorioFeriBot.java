@@ -16,6 +16,8 @@ import java.util.concurrent.Executors;
 import bo.feribot.app.data.local.AppDatabase;
 import bo.feribot.app.data.local.SeedLoader;
 import bo.feribot.app.data.local.entity.HistorialEntity;
+import bo.feribot.app.data.local.entity.FotoCotizacionEntity;
+import bo.feribot.app.data.local.entity.PuestoEntity;
 import bo.feribot.app.data.local.entity.SinonimoEntity;
 import bo.feribot.app.data.local.model.ProductoOferta;
 import bo.feribot.app.domain.CatalogoFeriBot;
@@ -41,6 +43,10 @@ public class RepositorioFeriBot {
 
     public interface Callback {
         void onResultado(RespuestaFeriBot respuesta);
+    }
+
+    public interface CallbackPuestos {
+        void onResultado(List<PuestoEntity> puestos);
     }
 
     private RepositorioFeriBot(Context contexto) {
@@ -91,6 +97,39 @@ public class RepositorioFeriBot {
             }
             RespuestaFeriBot resultado = respuesta;
             principal.post(() -> callback.onResultado(resultado));
+        });
+    }
+
+    public void puestos(CallbackPuestos callback) {        io.execute(() -> {
+            List<PuestoEntity> lista = new ArrayList<>();
+            try {
+                lista = db.catalogoDao().listarPuestos();
+            } catch (Exception e) {
+                Log.e(TAG, "No se pudieron leer los puestos", e);
+            }
+            List<PuestoEntity> resultado = lista;
+            principal.post(() -> callback.onResultado(resultado));
+        });
+    }
+
+    public void guardarFoto(Integer productoId, String producto, String precio, String ruta,
+                            Runnable alTerminar) {
+        io.execute(() -> {
+            try {
+                FotoCotizacionEntity foto = new FotoCotizacionEntity();
+                foto.productoId = productoId;
+                foto.producto = producto == null ? "" : producto;
+                foto.precio = precio;
+                foto.ruta = ruta == null ? "" : ruta;
+                foto.creadoEn = LocalDateTime.now().toString();
+                db.fotoDao().insertar(foto);
+            } catch (Exception e) {
+                Log.e(TAG, "No se pudo guardar la foto", e);
+            } finally {
+                if (alTerminar != null) {
+                    principal.post(alTerminar);
+                }
+            }
         });
     }
 

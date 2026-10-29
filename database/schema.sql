@@ -114,6 +114,19 @@ CREATE TABLE IF NOT EXISTS historial_consultas (
 );
 
 -- ------------------------------------------------------------
+-- Fotos tomadas en el puesto y asociadas a una cotización
+-- ------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS fotos_cotizacion (
+    id          INTEGER PRIMARY KEY AUTOINCREMENT,
+    producto_id INTEGER,
+    producto    TEXT    NOT NULL,
+    precio      TEXT,
+    ruta        TEXT    NOT NULL,
+    creado_en   TEXT    NOT NULL DEFAULT (datetime('now')),
+    FOREIGN KEY (producto_id) REFERENCES productos(id) ON DELETE SET NULL
+);
+
+-- ------------------------------------------------------------
 -- Cola de sincronización (offline-first)
 -- ------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS cola_sincronizacion (
@@ -139,3 +152,4 @@ CREATE INDEX IF NOT EXISTS idx_pp_puesto ON producto_puesto(puesto_id);
 CREATE INDEX IF NOT EXISTS idx_sinonimos_producto ON sinonimos(producto_id);
 CREATE INDEX IF NOT EXISTS idx_historial_fecha ON historial_consultas(creado_en);
 CREATE INDEX IF NOT EXISTS idx_cola_estado ON cola_sincronizacion(estado);
+CREATE INDEX IF NOT EXISTS idx_fotos_fecha ON fotos_cotizacion(creado_en);

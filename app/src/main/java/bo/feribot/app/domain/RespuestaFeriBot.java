@@ -20,13 +20,16 @@ public class RespuestaFeriBot {
     public final String estado;
     public final String precio;
     public final String ubicacion;
+    public final Double latitud;
+    public final Double longitud;
     public final String accion;
     public final String consejo;
     public final String mensaje;
 
     private RespuestaFeriBot(boolean encontrado, boolean estimado, Intencion intencion,
                              Integer productoId, String producto, String estado, String precio,
-                             String ubicacion, String accion, String consejo, String mensaje) {
+                             String ubicacion, Double latitud, Double longitud,
+                             String accion, String consejo, String mensaje) {
         this.encontrado = encontrado;
         this.estimado = estimado;
         this.intencion = intencion;
@@ -35,6 +38,8 @@ public class RespuestaFeriBot {
         this.estado = estado;
         this.precio = precio;
         this.ubicacion = ubicacion;
+        this.latitud = latitud;
+        this.longitud = longitud;
         this.accion = accion;
         this.consejo = consejo;
         this.mensaje = mensaje;
@@ -62,7 +67,8 @@ public class RespuestaFeriBot {
                 .append("\n\nPrecio referencial; el final se cierra regateando en el puesto.");
 
         return new RespuestaFeriBot(true, false, intencion, item.productoId, item.nombre,
-                item.estado, precio, ubicacion, accion, consejo, mensaje.toString());
+                item.estado, precio, ubicacion, item.latitud, item.longitud,
+                accion, consejo, mensaje.toString());
     }
 
     public static RespuestaFeriBot saludo() {
@@ -73,7 +79,7 @@ public class RespuestaFeriBot {
                 + "• \"¿Dónde está el taladro?\"\n\n"
                 + "También entiendo \"cel\", \"casaca\", \"en la 16\" y otros modismos.";
         return new RespuestaFeriBot(true, false, Intencion.SALUDO, null, null, null,
-                null, null, null, null, texto);
+                null, null, null, null, null, null, texto);
     }
 
     public static RespuestaFeriBot ayuda() {
@@ -83,7 +89,7 @@ public class RespuestaFeriBot {
                 + "3. Toca \"Ver en Mapa\" para ir con el GPS.\n\n"
                 + "Funciono sin internet porque el catálogo está guardado en tu celular.";
         return new RespuestaFeriBot(true, false, Intencion.AYUDA, null, null, null,
-                null, null, null, null, texto);
+                null, null, null, null, null, null, texto);
     }
 
     public static RespuestaFeriBot noEncontrado(String consulta, CatalogoFeriBot catalogo) {
@@ -117,7 +123,7 @@ public class RespuestaFeriBot {
                 .append("Si me das otra pista (marca, modelo o rubro), lo busco de nuevo.");
 
         return new RespuestaFeriBot(false, true, Intencion.DESCONOCIDA, null, null, null,
-                null, null, null, null, texto.toString());
+                null, null, null, null, null, null, texto.toString());
     }
 
     private static String describirUbicacion(ItemCatalogo item) {

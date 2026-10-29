@@ -50,6 +50,9 @@ public interface CatalogoDao {
     @Query("SELECT * FROM sinonimos")
     List<SinonimoEntity> listarSinonimos();
 
+    @Query("SELECT * FROM puestos WHERE activo = 1 ORDER BY codigo")
+    List<PuestoEntity> listarPuestos();
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertarRubros(List<RubroEntity> rubros);
 

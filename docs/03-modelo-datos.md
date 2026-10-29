@@ -11,6 +11,7 @@ erDiagram
     COMERCIANTES ||--o{ PUESTOS : administra
     PRODUCTOS ||--o{ SINONIMOS : tiene
     PRODUCTOS ||--o{ HISTORIAL_CONSULTAS : referencia
+    PRODUCTOS ||--o{ FOTOS_COTIZACION : fotografia
 
     RUBROS {
         int id PK
@@ -64,6 +65,14 @@ erDiagram
         text texto
         text intencion
         int producto_id FK
+        text creado_en
+    }
+    FOTOS_COTIZACION {
+        int id PK
+        int producto_id FK
+        text producto
+        text precio
+        text ruta
         text creado_en
     }
 ```
@@ -145,6 +154,16 @@ Resuelve modismos y variantes del habla boliviana.
 | origen | TEXT | local / nube |
 | creado_en | TEXT | ISO-8601 |
 
+### `fotos_cotizacion`
+| Campo | Tipo | Descripción |
+|---|---|---|
+| id | INTEGER | PK |
+| producto_id | INTEGER | Producto consultado (nullable) |
+| producto | TEXT | Nombre del producto al momento de la foto |
+| precio | TEXT | Rango de precio mostrado |
+| ruta | TEXT | Ruta del JPEG en el almacenamiento privado de la app |
+| creado_en | TEXT | ISO-8601 |
+
 ### `cola_sincronizacion`
 | Campo | Tipo | Descripción |
 |---|---|---|
@@ -164,6 +183,7 @@ Resuelve modismos y variantes del habla boliviana.
 - Un **comerciante** administra un **puesto**.
 - Un **sinónimo** puede apuntar a un producto o a una intención.
 - El **historial** referencia el producto detectado, si existe.
+- Una **foto de cotización** se guarda en el dispositivo y referencia el producto consultado.
 
 ## 4. Índices
 
