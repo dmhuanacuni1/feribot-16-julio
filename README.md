@@ -55,23 +55,31 @@ AGENTE IA/
 
 ---
 
-## 🚀 Puesta en marcha (cuando exista el módulo `app/`)
+## 🚀 Puesta en marcha
 
 ```bash
-git clone <URL_DEL_REPO>
-cd "AGENTE IA"
-# Abrir la carpeta en Android Studio y ejecutar el módulo app
+git clone https://github.com/dmhuanacuni1/feribot-16-julio.git
+cd feribot-16-julio
+
+# Compilar el APK de depuración
 ./gradlew assembleDebug
+
+# Ejecutar las pruebas unitarias del motor
+./gradlew testDebugUnitTest
 ```
 
-Requisitos: JDK 17+, Android Studio Ladybug o superior, Android SDK 36.
+El APK se genera en `app/build/outputs/apk/debug/app-debug.apk`.
+
+Requisitos: JDK 17+ (Android Studio incluye uno), Android Studio Ladybug o superior,
+Android SDK 36. Si Gradle no encuentra el SDK, crea `local.properties` con
+`sdk.dir=<ruta del SDK>`.
 
 ---
 
 ## 🗺️ Roadmap
 
 - [x] **Sprint 0** — Repositorio, documentación, diagramas, esquema y dataset
-- [ ] **Sprint 1** — Esqueleto Android + chat offline con reglas y Room
+- [x] **Sprint 1** — App Android en Java, Room y chat offline con motor de reglas
 - [ ] **Sprint 2** — Geolocalización, mapas offline, cámara y voz
 - [ ] **Sprint 3** — API REST + panel web + sincronización
 - [ ] **Sprint 4** — Pruebas, hardening y entrega final

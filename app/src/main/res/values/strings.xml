@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FeriBot 16 de Julio</string>
+    <string name="app_subtitulo">Feria 16 de Julio · El Alto</string>
+    <string name="chat_hint">Ej.: ¿a cómo está la lap?</string>
+    <string name="chat_enviar">Enviar mensaje</string>
+    <string name="chat_mic">Dictar por voz</string>
+    <string name="chat_mic_proximamente">El dictado por voz llega en el Sprint 2</string>
+</resources>

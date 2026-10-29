@@ -103,3 +103,14 @@ Una historia entra a un sprint si:
 - Está estimada y cabe en el sprint.
 - No depende de una historia no terminada.
 - Tiene diseño o referencia visual si afecta la UI.
+
+## 5. Estado de avance
+
+| Sprint | Estado | Historias completadas |
+|---|---|---|
+| 0 | ✅ Completado | HU-01 |
+| 1 | ✅ Completado | HU-02, HU-04, HU-05, HU-06, HU-21 |
+| 2 | ⏳ Pendiente | HU-09 a HU-14 |
+| 3 | ⏳ Pendiente | HU-15 a HU-19 |
+| 4 | ⏳ Pendiente | HU-20, HU-22, HU-23 |
+
