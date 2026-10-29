@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="azul">#1565C0</color>
+    <color name="azul_oscuro">#0D47A1</color>
+    <color name="ambar">#FFB300</color>
+    <color name="fondo_chat">#F2F4F7</color>
+    <color name="burbuja_bot">#FFFFFF</color>
+    <color name="texto_principal">#1A1A1A</color>
+    <color name="texto_secundario">#6B7280</color>
+    <color name="blanco">#FFFFFF</color>
+</resources>
